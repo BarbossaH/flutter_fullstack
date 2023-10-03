@@ -8,7 +8,7 @@ class GlobalVariable {
     ],
     stops: [0.5, 1.0],
   );
-
+  static const primaryColor = Color(0xFF03910B);
   static const secondaryColor = Color.fromRGBO(255, 153, 0, 1);
   static const backgroundColor = Colors.white;
   static const Color greyBackgroundCOlor = Color(0xffebecee);
