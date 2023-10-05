@@ -1,6 +1,6 @@
-import 'package:amzone_clone/constants/global_variables.dart';
-import 'package:amzone_clone/features/auth/screens/auth_screen.dart';
-import 'package:amzone_clone/router.dart';
+import 'package:amazone_clone/constants/global_variables.dart';
+import 'package:amazone_clone/features/auth/screens/auth_screen.dart';
+import 'package:amazone_clone/router.dart';
 import 'package:flutter/material.dart';
 
 void main() {

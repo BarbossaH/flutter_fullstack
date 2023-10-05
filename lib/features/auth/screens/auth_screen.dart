@@ -1,6 +1,6 @@
-import 'package:amzone_clone/common/widgets/cumstom_button.dart';
-import 'package:amzone_clone/common/widgets/custom_textfield.dart';
-import 'package:amzone_clone/constants/global_variables.dart';
+import 'package:amazone_clone/common/widgets/cumstom_button.dart';
+import 'package:amazone_clone/common/widgets/custom_textfield.dart';
+import 'package:amazone_clone/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 
 enum Auth { signIn, signUp }
