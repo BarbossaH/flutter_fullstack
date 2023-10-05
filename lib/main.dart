@@ -27,25 +27,6 @@ class MyApp extends StatelessWidget {
           // useMaterial3: true,
         ),
         onGenerateRoute: (settings) => generateRoute(settings),
-        home: Scaffold(
-          appBar: AppBar(title: const Text("Amazon")),
-          body: Column(
-            children: [
-              const Center(child: Text("This is a full stack project")),
-              // ElevatedButton(
-              //     onPressed: () {
-              //       Navigator.of(context).pushNamed(AuthScreen.routeName);
-              //     },
-              // child: const Text('Click'))
-              Builder(builder: (context) {
-                return ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, AuthScreen.routeName);
-                    },
-                    child: const Text('Click'));
-              })
-            ],
-          ),
-        ));
+        home: const AuthScreen());
   }
 }
