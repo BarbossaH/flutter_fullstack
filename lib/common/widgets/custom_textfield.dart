@@ -1,3 +1,4 @@
+import 'package:amazone_clone/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -13,11 +14,14 @@ class CustomTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         border: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black38)),
+            borderSide: BorderSide(color: GlobalVariable.primaryColor)),
         enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black38)),
+            borderSide: BorderSide(color: GlobalVariable.primaryColor)),
       ),
       validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Enter your $hintText';
+        }
         return null;
       },
     );
