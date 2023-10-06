@@ -25,20 +25,19 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _nameController.dispose();
   }
 
-  void signUpUser() {
+  void signUpUser(VoidCallback setStateCallback) {
     authService.signUpUser(
-      context: context,
-      email: _emailController.text,
-      password: _passwordController.text,
-      name: _nameController.text,
-    );
+        context: context,
+        email: _emailController.text,
+        password: _passwordController.text,
+        name: _nameController.text,
+        setStateCallback: setStateCallback);
   }
 
   void signInUser() {
@@ -149,7 +148,11 @@ class _AuthScreenState extends State<AuthScreen> {
                       CustomButton(
                           onTap: () {
                             if (_signUpFormKey.currentState!.validate()) {
-                              signUpUser();
+                              signUpUser(() {
+                                setState(() {
+                                  _auth = Auth.signIn;
+                                });
+                              });
                             }
                           },
                           text: "Sign Up")

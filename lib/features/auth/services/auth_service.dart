@@ -4,17 +4,22 @@ import 'dart:convert';
 
 import 'package:amazone_clone/common/utils/res_msg_handling.dart';
 import 'package:amazone_clone/common/utils/snack_bar.dart';
+import 'package:amazone_clone/features/home/screen/home_screen.dart';
 import 'package:amazone_clone/models/user.dart';
+import 'package:amazone_clone/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:amazone_clone/constants/global_variables.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   void signUpUser(
       {required BuildContext context,
       required String email,
       required String password,
-      required String name}) async {
+      required String name,
+      required VoidCallback setStateCallback}) async {
     try {
       User user = User(
           id: '',
@@ -37,6 +42,7 @@ class AuthService {
           res: res,
           context: context,
           onSuccess: () {
+            setStateCallback();
             showSnackBar(
                 context, 'Account created! Login with the same credentials');
           });
@@ -62,8 +68,16 @@ class AuthService {
       httpResMsgHandler(
           res: res,
           context: context,
-          onSuccess: () {
-            showSnackBar(context, 'Login successfully');
+          onSuccess: () async {
+            // login successfully, then store the response data
+            //it stores data into hardware
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            //store data in memory
+            Provider.of<UserProvider>(context, listen: false).setUser(res.body);
+            await prefs.setString(
+                'x-auth-token', jsonDecode(res.body)['token']);
+            Navigator.pushNamedAndRemoveUntil(
+                context, HomeScreen.routeName, (route) => false);
           });
     } catch (e) {
       showSnackBar(context, e.toString());
