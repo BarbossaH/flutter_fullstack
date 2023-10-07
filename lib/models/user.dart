@@ -35,7 +35,9 @@ class User {
     return User(
       id: map['_id'] ?? '',
       name: map['name'] ?? '',
+      // name: map['user']['name'] ?? '',
       email: map['email'] ?? '',
+      // email: map['user']['email'] ?? '',
       password: map['password'] ?? '',
       address: map['address'] ?? '',
       type: map['type'] ?? '',

@@ -1,24 +1,55 @@
 import 'package:amazone_clone/constants/global_variables.dart';
-import 'package:amazone_clone/constants/providers.dart';
+import 'package:amazone_clone/features/auth/services/auth_service.dart';
+import 'package:amazone_clone/features/home/screen/home_screen.dart';
+// import 'package:amazone_clone/providers/providers.dart';
 import 'package:amazone_clone/features/auth/screens/auth_screen.dart';
+import 'package:amazone_clone/providers/user_provider.dart';
 // import 'package:amazone_clone/providers/user_provider.dart';
 import 'package:amazone_clone/router.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(MultiProvider(
-      providers: appProviders,
-      // providers: [ChangeNotifierProvider(create: (context) => UserProvider())],
+      // providers: appProviders,
+      providers: [ChangeNotifierProvider(create: (context) => UserProvider())],
       child: const MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final AuthService authService = AuthService();
+  // String? localToken;
+  @override
+  void initState() {
+    super.initState();
+    // print('$context 333');
+    // _loadToken();
+    authService.getUserData(context);
+  }
+
+  // Helper function to load the token from SharedPreferences
+  // Future<void> _loadToken() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final token = prefs.getString('x-auth-token');
+  //   setState(() {
+  //     localToken = token;
+  //   });
+
+  // Now you can use the authToken as needed in your app
+  // }
+
   @override
   Widget build(BuildContext context) {
+    // print("$localToken 111");
+    // print(Provider.of<UserProvider>(context).user.token);
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -33,6 +64,10 @@ class MyApp extends StatelessWidget {
           // useMaterial3: true,
         ),
         onGenerateRoute: (settings) => generateRoute(settings),
-        home: const AuthScreen());
+        // home: const AuthScreen());
+        home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+            ? const HomeScreen()
+            : const AuthScreen());
+    // home: localToken != null ? const HomeScreen() : const AuthScreen());
   }
 }
