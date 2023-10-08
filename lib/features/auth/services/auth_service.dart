@@ -4,7 +4,8 @@ import 'dart:convert';
 
 import 'package:amazone_clone/common/utils/res_msg_handling.dart';
 import 'package:amazone_clone/common/utils/snack_bar.dart';
-import 'package:amazone_clone/features/home/screen/home_screen.dart';
+import 'package:amazone_clone/common/widgets/bottom_bar.dart';
+// import 'package:amazone_clone/features/home/screen/home_screen.dart';
 import 'package:amazone_clone/models/user.dart';
 import 'package:amazone_clone/providers/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class AuthService {
     try {
       // BuildContext localContext = context;
 
-      print('$context 12');
+      // print('$context 12');
       http.Response res = await http.post(
         Uri.parse('$uri/api/auth/signIn'),
         body: jsonEncode({'email': email, 'password': password}),
@@ -78,9 +79,9 @@ class AuthService {
             //store data in memory
             Provider.of<UserProvider>(context, listen: false).setUser(res.body);
             await prefs.setString(authToken, jsonDecode(res.body)['token']);
-            print('$context 123');
+            // print('$context 123');
             Navigator.pushNamedAndRemoveUntil(
-                context, HomeScreen.routeName, (route) => false);
+                context, BottomBar.routeName, (route) => false);
           });
     } catch (e) {
       // showSnackBar(context, e.toString());
@@ -94,9 +95,9 @@ class AuthService {
       //try to get the token first
       SharedPreferences preferences = await SharedPreferences.getInstance();
       String? token = preferences.getString(authToken);
-      print(
-        '$token 22222',
-      );
+      // print(
+      //   '$token 22222',
+      // );
       if (token == null || token.isEmpty) {
         preferences.setString(authToken, '');
         return;
@@ -118,9 +119,9 @@ class AuthService {
               'Content-Type': 'application/json; charset=UTF-8',
               authToken: token
             });
-        print(
-          '${userRes.body} 1111122222',
-        );
+        // print(
+        //   '${userRes.body} 1111122222',
+        // );
         var userProvider = Provider.of<UserProvider>(context, listen: false);
         userProvider.setUser(userRes.body);
       }
