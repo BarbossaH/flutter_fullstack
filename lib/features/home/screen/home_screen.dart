@@ -1,4 +1,5 @@
 import 'package:amazone_clone/constants/global_variables.dart';
+import 'package:amazone_clone/features/home/widgets/carousel_image.dart';
 import 'package:amazone_clone/features/home/widgets/top_categories.dart';
 import 'package:amazone_clone/features/home/widgets/user_address.dart';
 // import 'package:amazone_clone/providers/user_provider.dart';
@@ -93,6 +94,10 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 10,
             ),
             TopCategories(),
+            SizedBox(
+              height: 10,
+            ),
+            CarouselImage()
           ],
         ));
   }
