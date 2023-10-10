@@ -1,4 +1,5 @@
 import 'package:amazone_clone/constants/global_variables.dart';
+import 'package:amazone_clone/features/home/widgets/top_categories.dart';
 import 'package:amazone_clone/features/home/widgets/user_address.dart';
 // import 'package:amazone_clone/providers/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -90,7 +91,8 @@ class _HomeScreenState extends State<HomeScreen> {
             UserAddress(),
             SizedBox(
               height: 10,
-            )
+            ),
+            TopCategories(),
           ],
         ));
   }
