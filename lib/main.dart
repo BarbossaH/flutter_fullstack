@@ -9,6 +9,7 @@ import 'package:amazone_clone/providers/user_provider.dart';
 import 'package:amazone_clone/router.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -27,29 +28,30 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final AuthService authService = AuthService();
-  // String? localToken;
+  String? localToken;
   @override
   void initState() {
     super.initState();
     // print('$context 333');
-    // _loadToken();
+    _loadToken();
+    print("${localToken?.isNotEmpty} $localToken 1112");
+
     authService.getUserData(context);
   }
 
   // Helper function to load the token from SharedPreferences
-  // Future<void> _loadToken() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   final token = prefs.getString('x-auth-token');
-  //   setState(() {
-  //     localToken = token;
-  //   });
-
-  // Now you can use the authToken as needed in your app
-  // }
+  Future<void> _loadToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('x-auth-token');
+    print('$token 333');
+    setState(() {
+      localToken = token;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    // print("$localToken 111");
+    print("${localToken?.isNotEmpty} $localToken 111");
     // print(Provider.of<UserProvider>(context).user.token);
     return MaterialApp(
         title: 'Flutter Demo',
@@ -66,9 +68,11 @@ class _MyAppState extends State<MyApp> {
         ),
         onGenerateRoute: (settings) => generateRoute(settings),
         // home: const AuthScreen());
-        home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+        // home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+        //     ? const BottomBar()
+        //     : const AuthScreen());
+        home: (localToken != '' && localToken != null)
             ? const BottomBar()
             : const AuthScreen());
-    // home: localToken != null ? const HomeScreen() : const AuthScreen());
   }
 }
