@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     // print('$context 333');
     _loadToken();
-    print("${localToken?.isNotEmpty} $localToken 1112");
+    // print("${localToken?.isNotEmpty} $localToken 1112");
 
     authService.getUserData(context);
   }
@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> _loadToken() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('x-auth-token');
-    print('$token 333');
+    // print('$token 333');
     setState(() {
       localToken = token;
     });
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    print("${localToken?.isNotEmpty} $localToken 111");
+    // print("${localToken?.isNotEmpty} $localToken 111");
     // print(Provider.of<UserProvider>(context).user.token);
     return MaterialApp(
         title: 'Flutter Demo',
