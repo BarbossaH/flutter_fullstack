@@ -4,8 +4,6 @@ import 'dart:convert';
 
 import 'package:amazone_clone/common/utils/res_msg_handling.dart';
 import 'package:amazone_clone/common/utils/snack_bar.dart';
-import 'package:amazone_clone/common/widgets/bottom_bar.dart';
-// import 'package:amazone_clone/features/home/screen/home_screen.dart';
 import 'package:amazone_clone/models/user.dart';
 import 'package:amazone_clone/providers/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -73,6 +71,8 @@ class AuthService {
           res: res,
           context: context,
           onSuccess: () async {
+            // Navigator.pushNamedAndRemoveUntil(
+            //     context, BottomBar.routeName, (route) => false);
             // login successfully, then store the response data
             //it stores data into hardware
             SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -80,8 +80,6 @@ class AuthService {
             Provider.of<UserProvider>(context, listen: false).setUser(res.body);
             await prefs.setString(authToken, jsonDecode(res.body)['token']);
             // print('$context 123');
-            Navigator.pushNamedAndRemoveUntil(
-                context, BottomBar.routeName, (route) => false);
           });
     } catch (e) {
       // showSnackBar(context, e.toString());
