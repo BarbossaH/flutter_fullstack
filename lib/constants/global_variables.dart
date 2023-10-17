@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-String uri = 'http://169.254.143.238:3500';
-// String uri = 'http://0.0.0.0:3500';
+// String uri = 'http://169.254.143.238:3500';
+String uri = 'http://127.0.0.1:3500';
 
 String authToken = 'x-auth-token';
 

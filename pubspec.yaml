@@ -36,9 +36,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^1.1.0
   shared_preferences: ^2.2.1
+  shared_preferences_web: ^2.2.1
+  path_provider: ^2.1.1
   provider: ^6.0.5
   badges: ^3.1.2
   carousel_slider: ^4.2.1
+  flutter_webrtc: ^0.9.45
 
 dev_dependencies:
   flutter_test:
