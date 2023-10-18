@@ -3,6 +3,7 @@ import 'package:amazone_clone/features/home/widgets/carousel_image.dart';
 import 'package:amazone_clone/features/home/widgets/deal_of_day.dart';
 import 'package:amazone_clone/features/home/widgets/top_categories.dart';
 import 'package:amazone_clone/features/home/widgets/user_address.dart';
+import 'package:amazone_clone/features/video/screen/media_screen.dart';
 // import 'package:amazone_clone/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
@@ -77,7 +78,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 42,
                     margin: const EdgeInsets.symmetric(horizontal: 10),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // Navigator.pushNamedAndRemoveUntil(
+                        //     context, BottomBar.routeName, (route) => false);
+                        Navigator.pushNamed(context, UserMedia.routeName);
+                      },
                       icon: const Icon(
                         Icons.mic,
                         color: Colors.black,
