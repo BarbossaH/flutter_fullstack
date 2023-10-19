@@ -80,7 +80,7 @@ class _BottomBarState extends State<BottomBar> {
                       : GlobalVariable.backgroundColor,
                   width: bottomBarBoardWidth,
                 ))),
-                child: badges.Badge(
+                child: const badges.Badge(
                   badgeContent: Text('1'),
                   badgeStyle: badges.BadgeStyle(
                     badgeColor: Colors.white,
