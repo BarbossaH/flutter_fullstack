@@ -4,6 +4,7 @@ import 'package:amazone_clone/features/home/screen/home_screen.dart';
 import 'package:amazone_clone/features/video/screen/control_device.dart';
 import 'package:amazone_clone/features/video/screen/display_media_screen.dart';
 import 'package:amazone_clone/features/video/screen/media_screen.dart';
+import 'package:amazone_clone/features/video/screen/peer_connect.dart';
 import 'package:amazone_clone/features/video/screen/test_list.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,9 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case ControlDevice.routeName:
       return MaterialPageRoute(
           settings: routeSettings, builder: (_) => const ControlDevice());
+    case PeerConnection.routeName:
+      return MaterialPageRoute(
+          settings: routeSettings, builder: (_) => const PeerConnection());
     case TestList.routeName:
       return MaterialPageRoute(
           settings: routeSettings, builder: (_) => const TestList());

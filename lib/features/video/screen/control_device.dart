@@ -13,11 +13,8 @@ class _ControlDeviceState extends State<ControlDevice> {
   late MediaStream _localStream;
   final _localRenderer = RTCVideoRenderer();
   bool _isOpen = false;
-  //是否关闭摄像头
   bool _cameraOff = false;
-  //是否关闭麦克风
   bool _microphoneOff = false;
-  //是否打开扬声器
   bool _speakerOn = true;
   @override
   void initState() {
@@ -145,7 +142,7 @@ class _ControlDeviceState extends State<ControlDevice> {
               onPressed: () {
                 _switchCamera();
               },
-              icon: Icon(Icons.switch_camera)),
+              icon: const Icon(Icons.switch_camera)),
           IconButton(
               onPressed: () {
                 _turnMicrophone();

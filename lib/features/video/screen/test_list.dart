@@ -1,6 +1,7 @@
 import 'package:amazone_clone/features/video/screen/control_device.dart';
 import 'package:amazone_clone/features/video/screen/display_media_screen.dart';
 import 'package:amazone_clone/features/video/screen/media_screen.dart';
+import 'package:amazone_clone/features/video/screen/peer_connect.dart';
 import 'package:flutter/material.dart';
 
 class TestList extends StatelessWidget {
@@ -31,6 +32,12 @@ class TestList extends StatelessWidget {
             title: const Text('ControlDevice'),
             onTap: () {
               Navigator.pushNamed(context, ControlDevice.routeName);
+            },
+          ),
+          ListTile(
+            title: const Text('Connection'),
+            onTap: () {
+              Navigator.pushNamed(context, PeerConnection.routeName);
             },
           ),
         ],
