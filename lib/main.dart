@@ -4,6 +4,7 @@ import 'package:amazone_clone/features/admin/screen/admin_screen.dart';
 import 'package:amazone_clone/features/auth/services/auth_service.dart';
 // import 'package:amazone_clone/features/home/screen/home_screen.dart';
 import 'package:amazone_clone/features/auth/screens/auth_screen.dart';
+import 'package:amazone_clone/features/meeting/meeting_screen.dart';
 import 'package:amazone_clone/providers/providers.dart';
 import 'package:amazone_clone/providers/user_provider.dart';
 import 'package:amazone_clone/router.dart';
@@ -71,16 +72,11 @@ class _MyAppState extends State<MyApp> {
           // useMaterial3: true,
         ),
         onGenerateRoute: (settings) => generateRoute(settings),
-        // home: const AuthScreen());
+        // home: const MeetingScreen());
         home: (Provider.of<UserProvider>(context).user.token.isNotEmpty)
             ? Provider.of<UserProvider>(context).user.type == 'user'
                 ? const BottomBar()
                 : const AdminScreen()
             : const AuthScreen());
-    // home: (localToken != '' && localToken != null)
-    //     ? Provider.of<UserProvider>(context).user.type == 'user'
-    //         ? const BottomBar()
-    //         : const AdminScreen()
-    //     : const AuthScreen());
   }
 }

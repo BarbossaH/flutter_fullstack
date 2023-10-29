@@ -1,3 +1,4 @@
+import 'package:amazone_clone/features/meeting/meeting_screen.dart';
 import 'package:amazone_clone/features/video/screen/control_device.dart';
 import 'package:amazone_clone/features/video/screen/display_media_screen.dart';
 import 'package:amazone_clone/features/video/screen/media_screen.dart';
@@ -38,6 +39,12 @@ class TestList extends StatelessWidget {
             title: const Text('Connection'),
             onTap: () {
               Navigator.pushNamed(context, PeerConnection.routeName);
+            },
+          ),
+          ListTile(
+            title: const Text('Meeting'),
+            onTap: () {
+              Navigator.pushNamed(context, MeetingScreen.routeName);
             },
           ),
         ],

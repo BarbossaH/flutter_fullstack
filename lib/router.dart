@@ -1,6 +1,7 @@
 import 'package:amazone_clone/common/widgets/bottom_bar.dart';
 import 'package:amazone_clone/features/auth/screens/auth_screen.dart';
 import 'package:amazone_clone/features/home/screen/home_screen.dart';
+import 'package:amazone_clone/features/meeting/meeting_screen.dart';
 import 'package:amazone_clone/features/video/screen/control_device.dart';
 import 'package:amazone_clone/features/video/screen/display_media_screen.dart';
 import 'package:amazone_clone/features/video/screen/media_screen.dart';
@@ -34,6 +35,10 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case TestList.routeName:
       return MaterialPageRoute(
           settings: routeSettings, builder: (_) => const TestList());
+    case MeetingScreen.routeName:
+      return MaterialPageRoute(
+          settings: routeSettings, builder: (_) => const MeetingScreen());
+
     default:
       return MaterialPageRoute(
           builder: (_) => const Scaffold(
