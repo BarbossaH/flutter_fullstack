@@ -71,7 +71,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
               })),
               Flexible(
                   child: FormHelper.submitButton("Start Meeting", () async {
-                var res = await startMeeting();
+                var res = await startMeetingAPI();
                 final body = jsonDecode(res!.body);
                 final meetingId = body['data'];
                 validateMeeting(meetingId);
@@ -85,7 +85,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
 
   void validateMeeting(String meetingId) async {
     try {
-      Response response = await joinMeeting(meetingId);
+      Response response = await joinMeetingAPI(meetingId);
       var data = json.decode(response.body);
       final meeting = Meeting.fromJson(data['data']);
       goToJoinScreen(meeting);
